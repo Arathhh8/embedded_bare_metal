@@ -43,3 +43,36 @@ Syntax:
 - Important command by which you can instruct the linker how to merge the input sections to yield an output section.
 - This commnad also controls the order in which different output sections appear in the .elf file generated.
 - By using this commnand, you also mention the placement of a section in memory region. For example, you instruct the linker to place the .text section in the FLASH memory region, which is described by the MEMORY command.
+
+### VMA and LMA
+
+- VMA (Virtual Memory Address): The address where a section is expected to be during execution.
+- LMA (Load Memory Address): The address where a section is initially stored in memory before being copied or relocated to its VMA.
+
+## Location Counter
+
+- This is a special linker symbol denoted by a dot '.'
+- This symbol is called "location counter" since linker automatically updates this symbol with location (address) information.
+- You can use this symbol inside the linker script to track and define boundaries of various sections.
+- You can also set location counter to any specific value while writing linker script.
+- Location counter should appear only inside the **SECTIONS** command.
+- The location counter is incremented by the size of the output section.
+
+***Note: Location counter always tracks VMA of the section in which it is being used***
+
+## Linker Script Symbol
+
+- A symbol is the name of an address.
+- A symbol declaration is not equivalent to a variable declaration what you do in your 'C' application.
+
+       ––––––––––––––––––––––                       –––––––––––––––––––––––––
+      |      main.c          |                     |          main.o         |
+      |                      |                     |                         |
+      |  int my_value = 100; |                     |      Symbol Table       |
+      |  (global variable)   |                     |  (address)   | (symbol) |
+      |                      |     ----------->    |              |          |
+      |  my_value = 50;      |                     |  0x2000_0000 | my_value |
+      |                      |                     |              |          |
+      |  void func1(void)    |                     |  0x0800_8000 | func1    |
+      |  {...}               |                     |                         |
+       ––––––––––––––––––––––                       –––––––––––––––––––––––––

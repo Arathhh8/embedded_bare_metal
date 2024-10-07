@@ -1,6 +1,9 @@
 /* Entry Point */
 ENTRY(Reset_Handler)
 
+__max_heap_size = 0x400; /* A symbol declaration. Not a variable */
+__max_stack_size = 0x200; /* A symbol declaration. Not a variable */
+
 /* Memories definition */
 MEMORY
 {
@@ -21,15 +24,20 @@ SECTIONS
 
         // merge all .rodata section of all input files 
         *(.rodata)
+        _etext = .; /* Store the updated location counter value in to a sybol '_etext' */
     } >FLASH
 
     .data:
     {
+        _sdata = .; /* Assign a value to a symbol 'start_of_data' */
         *(.data)
+        _edata = .;
     } >SRAM AT> FLASH
 
     .bss:
     {
+        _sbss = .;
         *(.bss)
+        _ebss = .;
     } >SRAM
 }
