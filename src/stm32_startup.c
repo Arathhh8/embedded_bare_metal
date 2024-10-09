@@ -49,7 +49,7 @@ void TIM4_Handler(void)                         __attribute__((weak, alias("Defa
 void I2C1_EV_Handler(void)                      __attribute__((weak, alias("Default_Handler")));
 void I2C1_ER_Handler(void)                      __attribute__((weak, alias("Default_Handler")));
 void I2C2_EV_Handler(void)                      __attribute__((weak, alias("Default_Handler")));
-void I2C1_ER_Handler(void)                      __attribute__((weak, alias("Default_Handler")));
+void I2C2_ER_Handler(void)                      __attribute__((weak, alias("Default_Handler")));
 void SPI1_Handler(void)                         __attribute__((weak, alias("Default_Handler")));
 void SPI2_Handler(void)                         __attribute__((weak, alias("Default_Handler")));
 void USART1_Handler(void)                       __attribute__((weak, alias("Default_Handler")));
