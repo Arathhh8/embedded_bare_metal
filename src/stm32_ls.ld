@@ -14,27 +14,27 @@ MEMORY
 /* Memories section */
 SECTIONS
 {
-    .text:
+    .text :
     {
-        // merge all .isr_vector section of all input files
+        /* merge all .isr_vector section of all input files */
         *(.isr_vector)
         
-        // merge all .text section of all input files
+        /* merge all .text section of all input files */
         *(.text)
 
-        // merge all .rodata section of all input files 
+        /* merge all .rodata section of all input files */
         *(.rodata)
         _etext = .; /* Store the updated location counter value in to a sybol '_etext' */
     } >FLASH
 
-    .data:
+    .data :
     {
         _sdata = .; /* Assign a value to a symbol 'start_of_data' */
         *(.data)
         _edata = .;
     } >SRAM AT> FLASH
 
-    .bss:
+    .bss :
     {
         _sbss = .;
         *(.bss)
