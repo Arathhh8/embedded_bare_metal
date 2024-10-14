@@ -24,6 +24,7 @@ SECTIONS
 
         /* merge all .rodata section of all input files */
         *(.rodata)
+        . = ALIGN(4);
         _etext = .; /* Store the updated location counter value in to a sybol '_etext' */
     } >FLASH
 
@@ -31,6 +32,7 @@ SECTIONS
     {
         _sdata = .; /* Assign a value to a symbol 'start_of_data' */
         *(.data)
+        . = ALIGN(4);
         _edata = .;
     } >SRAM AT> FLASH
 
@@ -38,6 +40,8 @@ SECTIONS
     {
         _sbss = .;
         *(.bss)
+        *(COMMON)
+        . = ALIGN(4);
         _ebss = .;
     } >SRAM
 }
