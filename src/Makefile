@@ -18,4 +18,4 @@ program.elf : main.o led.o stm32_startup.o
 	$(CC) $(LDFLAGS) -o $@ $^
 
 clean:
-	rm -rf *.o *.elf
+	rm -rf *.o *.elf *.map
