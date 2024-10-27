@@ -36,7 +36,7 @@ All the relocatable object files will be taken by the linker and it will resolve
 
 ***all .o files*** **-> linker ->** ***.elf*** (executable and linkable format)
 
-After that you can take that executable which is in yellow formatto create some other formats such as binary format .bin or convert the .elf format to .ihex format using the ***objcopy tool***
+After that you can take that executable which is in yellow format to create some other formats such as binary format .bin or convert the .elf format to .ihex format using the ***objcopy tool***
 
 ### Summary of building process
 
