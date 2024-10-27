@@ -17,5 +17,9 @@ stm32_startup.o: stm32_startup.c
 program.elf : main.o led.o stm32_startup.o
 	$(CC) $(LDFLAGS) -o $@ $^
 
+load: 
+	openocd -f ../../../../Downloads/gnu-mcu-eclipse/openocd/0.10.0-12-20190422-2015/scripts/board/stm32f103c8_blue_pill.cfg
+
+
 clean:
 	rm -rf *.o *.elf *.map
